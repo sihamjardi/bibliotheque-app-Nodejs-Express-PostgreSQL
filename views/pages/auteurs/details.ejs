@@ -1,0 +1,18 @@
+<%- include('../../partials/header') %>
+
+<h2><%= auteur.prenom %> <%= auteur.nom %></h2>
+
+<p><strong>Date de naissance :</strong> <%= auteur.date_naissance ? auteur.date_naissance.toDateString() : 'N/A' %></p>
+<p><strong>Nationalité :</strong> <%= auteur.nationalite %></p>
+<p><strong>Biographie :</strong> <%= auteur.biographie %></p>
+
+<h3>Livres de cet auteur :</h3>
+<ul>
+  <% livres.forEach(livre => { %>
+    <li><a href="/livres/<%= livre.id %>"><%= livre.titre %></a> (<%= livre.annee_publication %>)</li>
+  <% }) %>
+</ul>
+
+<a href="/auteurs/<%= auteur.id %>/modifier">Modifier cet auteur</a>
+
+<%- include('../../partials/footer') %>

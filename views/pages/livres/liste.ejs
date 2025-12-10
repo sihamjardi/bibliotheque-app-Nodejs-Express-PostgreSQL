@@ -1,0 +1,39 @@
+<%- include('../../partials/header') %>
+<h2>Liste des livres</h2>
+<a href="/livres/ajouter" class="btn">Ajouter un livre</a>
+
+<form action="/livres/recherche" method="get" class="search-form">
+  <input type="text" name="q" value="<%= searchTerm %>" placeholder="Rechercher un livre">
+  <button type="submit">🔍</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Auteur</th>
+      <th>Genre</th>
+      <th>Disponible</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% livres.forEach(livre => { %>
+      <tr>
+        <td><%= livre.titre %></td>
+        <td><%= livre.auteur_prenom %> <%= livre.auteur_nom %></td>
+        <td><%= livre.genre %></td>
+        <td><%= livre.disponible ? 'Oui' : 'Non' %></td>
+        <td>
+          <a href="/livres/<%= livre.id %>" class="btn btn-details">Détails</a>
+          <a href="/livres/<%= livre.id %>/modifier" class="btn btn-modifier">Modifier</a>
+
+          <form action="/livres/<%= livre.id %>/supprimer" method="post" class="form-inline">
+            <button type="submit" class="btn btn-supprimer">Supprimer</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<%- include('../../partials/footer') %>

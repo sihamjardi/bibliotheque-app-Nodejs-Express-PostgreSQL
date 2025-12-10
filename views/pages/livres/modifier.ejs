@@ -1,0 +1,54 @@
+<%- include('../../partials/header') %>
+
+<h2>Modifier le livre</h2>
+
+<form action="/livres/modifier/<%= livre.id %>" method="post">
+  <div class="form-group">
+    <label for="titre">Titre :</label>
+    <input type="text" id="titre" name="titre" value="<%= livre.titre %>" required>
+  </div>
+
+  <div class="form-group">
+    <label for="auteur_id">Auteur :</label>
+    <select id="auteur_id" name="auteur_id" required>
+      <% auteurs.forEach(a => { %>
+        <option value="<%= a.id %>" <%= a.id === livre.auteur_id ? 'selected' : '' %>><%= a.nom %> <%= a.prenom %></option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="annee_publication">Année de publication :</label>
+    <input type="number" id="annee_publication" name="annee_publication" value="<%= livre.annee_publication %>">
+  </div>
+
+  <div class="form-group">
+    <label for="genre">Genre :</label>
+    <input type="text" id="genre" name="genre" value="<%= livre.genre %>">
+  </div>
+
+  <div class="form-group">
+    <label for="isbn">ISBN :</label>
+    <input type="text" id="isbn" name="isbn" value="<%= livre.isbn %>">
+  </div>
+
+  <div class="form-group">
+    <label for="resume">Résumé :</label>
+    <textarea id="resume" name="resume"><%= livre.resume %></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="disponible">Disponible :</label>
+    <select id="disponible" name="disponible">
+      <option value="true" <%= livre.disponible ? 'selected' : '' %>>Oui</option>
+      <option value="false" <%= !livre.disponible ? 'selected' : '' %>>Non</option>
+    </select>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit">Modifier</button>
+    <a href="/livres" class="btn">Annuler</a>
+  </div>
+</form>
+
+<%- include('../../partials/footer') %>

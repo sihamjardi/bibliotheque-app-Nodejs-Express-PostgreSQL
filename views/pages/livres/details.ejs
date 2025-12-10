@@ -1,0 +1,40 @@
+<%- include('../../partials/header') %>
+
+
+<h2>Détails du livre</h2>
+
+<table>
+  <tr>
+    <th>Titre</th>
+    <td><%= livre.titre %></td>
+  </tr>
+  <tr>
+    <th>Auteur</th>
+    <td><%= livre.auteur_nom %> <%= livre.auteur_prenom %></td>
+  </tr>
+  <tr>
+    <th>Année de publication</th>
+    <td><%= livre.annee_publication %></td>
+  </tr>
+  <tr>
+    <th>Genre</th>
+    <td><%= livre.genre %></td>
+  </tr>
+  <tr>
+    <th>ISBN</th>
+    <td><%= livre.isbn %></td>
+  </tr>
+  <tr>
+    <th>Résumé</th>
+    <td><%= livre.resume %></td>
+  </tr>
+  <tr>
+    <th>Disponible</th>
+    <td><%= livre.disponible ? 'Oui' : 'Non' %></td>
+  </tr>
+</table>
+
+<a href="/livres/modifier/<%= livre.id %>" class="btn">Modifier</a>
+<a href="/livres" class="btn">Retour</a>
+
+<%- include('../../partials/footer') %>
